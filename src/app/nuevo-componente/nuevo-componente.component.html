@@ -1,4 +1,4 @@
-<div #div class="scroll" (scroll)="onscroll($event);">
+<div #div class="scroll" (scroll)="onScroll($event);">
   <h1>Element 1</h1>
   <h2>Element 2</h2>
   <h3>Element 3</h3>
@@ -6,5 +6,5 @@
   <h5>Element 5</h5>
 </div>
 
-<button class="miboton" #myButton [@hideShowAnimator]="hideShowAnimator" (mouseover)="mouseover($event)" (mouseleave)="mouseleave($event)">Add
+<button class="miboton" #myButton [@hideShowAnimator]="hideShowAnimator" (mouseover)="onOver($event)" (mouseleave)="onLeave($event)">Add
   new</button>

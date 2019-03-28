@@ -17,7 +17,10 @@ import { HighlightDelayBarrier } from 'blocking-proxy/built/lib/highlight_delay_
 })
 export class NuevoComponenteComponent implements OnInit {
 
-  @ViewChild('div') divScroll: ElementRef;
+  @ViewChild('div.scroll') divScroll: ElementRef;
+
+
+
   private hideShowAnimator: Boolean = false;
   private timer;
   private puede = false;
@@ -35,28 +38,21 @@ export class NuevoComponenteComponent implements OnInit {
         this.hideShowAnimator = false;
       }
       
-    }, 2000);
+    }, 5000);
   }
 
+ onScroll($event){
+  this.puede = true;
+  this.hideShowAnimator = true;
+ }
 
-  @HostListener('scroll', ['div.scroll']) onscroll(event: Event) {
-    this.puede = true;
-    this.hideShowAnimator = true;
- 
-    /*if (this.divScroll.nativeElement.scrollTop > 20) {
-      
-    } else {
-      this.hideShowAnimator = false;
-    }*/
-  }
+ onOver($event){
+   this.puede = false;
+   this.hideShowAnimator = true;
+ }
 
-  @HostListener('mouseover', ['miboton']) mouseover(event: Event) {
-    this.hideShowAnimator = true;
-    this.puede = false;
-  }
-
-  @HostListener('mouseleave', ['miboton']) mouseleave(event: Event) {
-    this.puede = true;
-  }
+ onLeave($event){
+   this.puede = true;
+ }
   
 }
