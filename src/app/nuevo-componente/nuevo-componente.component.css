@@ -1,0 +1,7 @@
+div.scroll {
+  width: 40%;
+  height: 200px;
+  border: 1px solid black;
+  overflow: scroll;
+  overflow-x: hidden;
+}
