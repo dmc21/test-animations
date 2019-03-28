@@ -1,6 +1,5 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import {trigger, state, style, animate, transition} from '@angular/animations';
-import { HighlightDelayBarrier } from 'blocking-proxy/built/lib/highlight_delay_barrier';
 
 @Component({
   selector: 'app-nuevo-componente',
@@ -22,9 +21,8 @@ export class NuevoComponenteComponent implements OnInit {
 
 
   private hideShowAnimator: Boolean = false;
-  private timer;
   private puede = false;
-  constructor(private renderer: Renderer2) { }
+  constructor() { }
 
   ngOnInit() {
     this.hideShowAnimator = false;
@@ -32,8 +30,7 @@ export class NuevoComponenteComponent implements OnInit {
   }
 
   startTimer() {
-    this.timer = setInterval(() => {
-
+    setInterval(() => {
       if(this.puede){
         this.hideShowAnimator = false;
       }
