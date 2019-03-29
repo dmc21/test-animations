@@ -5,11 +5,14 @@ import { AppComponent } from './app.component';
 import { NuevoComponenteComponent } from './nuevo-componente/nuevo-componente.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { MaterialComponent } from './material/material.component';
+import { ScrollDirective } from './scroll.directive';
 @NgModule({
   declarations: [
     AppComponent,
-    NuevoComponenteComponent
+    NuevoComponenteComponent,
+    MaterialComponent,
+    ScrollDirective
   ],
   imports: [
     BrowserModule,

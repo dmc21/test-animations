@@ -16,40 +16,12 @@ import {trigger, state, style, animate, transition} from '@angular/animations';
 })
 export class NuevoComponenteComponent implements OnInit {
 
-  @ViewChild('div.scroll') divScroll: ElementRef;
-
-
-
   private hideShowAnimator: Boolean = false;
-  private puede = false;
+
   constructor() { }
 
   ngOnInit() {
-    this.hideShowAnimator = false;
-    this.startTimer();
+
   }
-
-  startTimer() {
-    setInterval(() => {
-      if(this.puede){
-        this.hideShowAnimator = false;
-      }
-      
-    }, 5000);
-  }
-
- onScroll($event){
-  this.puede = true;
-  this.hideShowAnimator = true;
- }
-
- onOver($event){
-   this.puede = false;
-   this.hideShowAnimator = true;
- }
-
- onLeave($event){
-   this.puede = true;
- }
   
 }

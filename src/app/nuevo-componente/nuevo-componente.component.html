@@ -1,10 +1,13 @@
-<div #div class="scroll" (scroll)="onScroll($event);">
-  <h1>Element 1</h1>
-  <h2>Element 2</h2>
-  <h3>Element 3</h3>
-  <h4>Element 4</h4>
-  <h5>Element 5</h5>
-</div>
 
-<button class="miboton" #myButton [@hideShowAnimator]="hideShowAnimator" (mouseover)="onOver($event)" (mouseleave)="onLeave($event)">Add
-  new</button>
+
+    <div class="scroll" [appScroll]="addBtn">
+      <h1>Element 1</h1>
+      <h2>Element 2</h2>
+      <h3>Element 3</h3>
+      <h4>Element 4</h4>
+      <h5>Element 5</h5>
+    </div>
+
+
+  <button #addBtn class="btnAdd" >Add
+    new</button>
