@@ -1,22 +1,34 @@
 import { Directive, Input, HostListener, Renderer2, OnInit } from '@angular/core';
-import {trigger, state, style, animate, transition} from '@angular/animations';
 
 @Directive({
   selector: '[appScroll]'
 })
 export class ScrollDirective implements OnInit {
 
-  ngOnInit(){
-    
+  constructor(private renderer: Renderer2) {
+
   }
 
-  constructor(private renderer: Renderer2) { }
-
+  // tslint:disable-next-line:no-input-rename
   @Input('appScroll') element: HTMLElement;
 
-  @HostListener('scroll') onScroll($event) {
-    
-    this.renderer.removeClass(this.element, 'btnAdd');
+    ngOnInit() {
 
+    }
+
+  @HostListener('scroll') onScroll($event) {
+
+    this.renderer.setStyle(this.element, 'opacity', 1);
+    this.renderer.setStyle(this.element, 'transition', 'opacity 1s');
+
+      const timer = setInterval(() => {
+        this.renderer.setStyle(this.element, 'opacity', 0);
+        this.renderer.setStyle(this.element, 'transition', 'opacity 1s');
+
+        if (timer) {
+          clearInterval(timer);
+       }
+
+      }, 3000);
   }
 }

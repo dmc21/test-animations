@@ -7,12 +7,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialComponent } from './material/material.component';
 import { ScrollDirective } from './scroll.directive';
+import { ShowButtonDirective } from './show-button.directive';
 @NgModule({
   declarations: [
     AppComponent,
     NuevoComponenteComponent,
     MaterialComponent,
-    ScrollDirective
+    ScrollDirective,
+    ShowButtonDirective
   ],
   imports: [
     BrowserModule,
