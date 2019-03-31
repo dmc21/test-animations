@@ -1,9 +1,9 @@
-import { Directive, Input, HostListener, Renderer2, OnInit } from '@angular/core';
+import { Directive, Input, HostListener, Renderer2 } from '@angular/core';
 
 @Directive({
   selector: '[appScroll]'
 })
-export class ScrollDirective implements OnInit {
+export class ScrollDirective {
 
   constructor(private renderer: Renderer2) {
 
@@ -12,28 +12,14 @@ export class ScrollDirective implements OnInit {
   // tslint:disable-next-line:no-input-rename
   @Input('appScroll') element: HTMLElement;
 
-    ngOnInit() {
-
-    }
-
   @HostListener('scroll') onScroll($event) {
-    this.showHidden();
-  }
-
-  private delay(ms: number) {
-    return new Promise(resolve => {
-      setTimeout(resolve, ms);
-    });
-  }
-
-  private async showHidden() {
     this.renderer.addClass(this.element, 'show');
     this.renderer.removeClass(this.element, 'hide');
 
-    await this.delay(6000);
+      setTimeout(() => {
+        this.renderer.removeClass(this.element, 'show');
+        this.renderer.addClass(this.element, 'hide');
 
-    this.renderer.removeClass(this.element, 'show');
-    this.renderer.addClass(this.element, 'hide');
-
+      }, 6000);
   }
 }
