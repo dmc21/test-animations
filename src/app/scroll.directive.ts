@@ -17,18 +17,23 @@ export class ScrollDirective implements OnInit {
     }
 
   @HostListener('scroll') onScroll($event) {
+    this.showHidden();
+  }
 
-    this.renderer.setStyle(this.element, 'opacity', 1);
-    this.renderer.setStyle(this.element, 'transition', 'opacity 1s');
+  private delay(ms: number) {
+    return new Promise(resolve => {
+      setTimeout(resolve, ms);
+    });
+  }
 
-      const timer = setInterval(() => {
-        this.renderer.setStyle(this.element, 'opacity', 0);
-        this.renderer.setStyle(this.element, 'transition', 'opacity 1s');
+  private async showHidden() {
+    this.renderer.addClass(this.element, 'show');
+    this.renderer.removeClass(this.element, 'hide');
 
-        if (timer) {
-          clearInterval(timer);
-       }
+    await this.delay(6000);
 
-      }, 3000);
+    this.renderer.removeClass(this.element, 'show');
+    this.renderer.addClass(this.element, 'hide');
+
   }
 }

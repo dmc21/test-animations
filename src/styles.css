@@ -10,3 +10,14 @@ div.scroll {
   button {
     cursor: pointer;
   }
+
+
+  .hide {
+    transition: opacity 1s;
+    opacity: 0;
+  }
+
+  .show {
+    transition: opacity 1s;
+    opacity: 1
+  }

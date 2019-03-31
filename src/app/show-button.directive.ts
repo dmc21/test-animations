@@ -12,14 +12,12 @@ export class ShowButtonDirective {
 
 
   @HostListener('mouseover') onOver() {
-    this.renderer.setStyle(this.button, 'opacity', 1);
-    this.renderer.setStyle(this.button, 'transition', 'opacity 1s');
+    this.renderer.addClass(this.button, 'show');
+    this.renderer.removeClass(this.button, 'hide');
   }
 
   @HostListener ('mouseleave') onLeave() {
-    this.renderer.setStyle(this.button, 'opacity', 0);
-    this.renderer.setStyle(this.button, 'transition', 'opacity 1s');
+    this.renderer.removeClass(this.button, 'show');
+    this.renderer.addClass(this.button, 'hide');
   }
-
-
 }
