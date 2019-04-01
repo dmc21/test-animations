@@ -1,39 +1,38 @@
-import { Directive, Input, HostListener, Renderer2, OnInit } from '@angular/core';
+import {Directive, ElementRef, HostListener, Input, Renderer2} from '@angular/core';
+import {MatButton} from '@angular/material';
 
 @Directive({
   selector: '[appScroll]'
 })
-export class ScrollDirective implements OnInit {
+export class ScrollDirective {
 
-  constructor(private renderer: Renderer2) {
+  timer = null;
 
-  }
-
-  // tslint:disable-next-line:no-input-rename
-  @Input('appScroll') element: HTMLElement;
-
-    ngOnInit() {
-
+  keyFrameShow = [
+    { // from
+      opacity: 0
+    },
+    { // to
+      opacity: 1
     }
+  ];
+
+  constructor(private renderer: Renderer2, private list: ElementRef) {}
+
+  @Input('appScroll') element: MatButton;
 
   @HostListener('scroll') onScroll($event) {
-    this.showHidden();
-  }
+    this.renderer.setStyle(this.element._elementRef.nativeElement, 'transition', 'opacity 1s');
+    this.renderer.addClass(this.element._elementRef.nativeElement, 'hide');
 
-  private delay(ms: number) {
-    return new Promise(resolve => {
-      setTimeout(resolve, ms);
-    });
-  }
+    if (this.timer != null) {
+      clearTimeout(this.timer);
+    }
 
-  private async showHidden() {
+    this.timer = setTimeout(() => {
+      this.renderer.removeClass(this.element._elementRef.nativeElement, 'hide');
+      this.element._elementRef.nativeElement.animate(this.keyFrameShow, 500);
 
-    this.renderer.removeClass(this.element, 'show');
-    this.renderer.removeClass(this.element, 'hide');
-
-    await this.delay(6000);
-
-    this.renderer.addClass(this.element, 'hide');
-
+    }, 1000);
   }
 }
